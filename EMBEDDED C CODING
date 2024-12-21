@@ -1,0 +1,32 @@
+#include <xc.h>
+#define _XTAL_FREQ 4000000
+#define d 500
+void main(void) {
+TRISA=0;
+PORTA=0X00;
+PORTC=0X00;
+TRISC=0X61;
+ANSEL=ANSELH=0X00;
+int ar[ ]={0XBF,0X06,0X5B,0X4F,0X66,0X6D,0X7D,0X07,0XFF,0X6F};
+int a=0,out=0;
+while(1)
+{
+if(RC5==1)
+{
+a++;
+}
+else if(RC6==1)
+{
+a--;
+}
+
+         if(RC0==1)
+         {
+             out=a;
+         }
+        
+        PORTA=ar[out];
+        __delay_ms(d);
+}
+return;
+}
